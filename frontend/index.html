@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Aegis — AI 보안 어시스턴트</title>
+    <link rel="icon" type="image/svg+xml" href="/icons/agent_aegis_favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/icons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+    <link rel="manifest" href="/icons/site.webmanifest">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="title">AI 보안 어시스턴트</h1>
+        <p id="subtitle">의심스러운 문자, 링크, 뉴스를 간편하게 확인하세요</p>
+
+        <div class="lang-switch">
+            <button onclick="setLang('ko')" id="btn-ko" class="active">한국어</button>
+            <button onclick="setLang('en')" id="btn-en">English</button>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" data-tab="phishing" id="tab-phishing">피싱 판별</button>
+            <button class="tab" data-tab="link" id="tab-link">링크 검사</button>
+            <button class="tab" data-tab="factcheck" id="tab-factcheck">팩트체크</button>
+        </div>
+
+        <div class="tab-content active" id="panel-phishing">
+            <textarea id="phishing-input" rows="5" placeholder="의심 문자를 붙여넣으세요..."></textarea>
+            <button class="submit" onclick="submitPhishing()" id="btn-phishing-submit">검사하기</button>
+        </div>
+
+        <div class="tab-content" id="panel-link">
+            <input type="url" id="link-input" placeholder="링크를 입력하세요...">
+            <button class="submit" onclick="submitLink()" id="btn-link-submit">검사하기</button>
+        </div>
+
+        <div class="tab-content" id="panel-factcheck">
+            <textarea id="factcheck-input" rows="5" placeholder="확인할 내용을 붙여넣으세요..."></textarea>
+            <button class="submit" onclick="submitFactcheck()" id="btn-factcheck-submit">검사하기</button>
+        </div>
+
+        <div id="result" class="result hidden"></div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

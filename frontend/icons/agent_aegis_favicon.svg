@@ -1,0 +1,24 @@
+<svg width="100%" viewBox="0 0 680 680" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="shield-clip">
+      <path d="M340 100 L520 170 L520 370 Q520 510 340 580 Q160 510 160 370 L160 170 Z"/>
+    </clipPath>
+  </defs>
+
+  <path d="M340 100 L520 170 L520 370 Q520 510 340 580 Q160 510 160 370 L160 170 Z" fill="#1a1a2e" stroke="#4a9eff" stroke-width="4" style="fill:rgb(26, 26, 46);stroke:rgb(74, 158, 255);color:rgb(0, 0, 0);stroke-width:4px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <path d="M340 118 L505 182 L505 368 Q505 498 340 562 Q175 498 175 368 L175 182 Z" fill="none" stroke="#4a9eff" stroke-width="1.5" opacity="0.4" style="fill:none;stroke:rgb(74, 158, 255);color:rgb(0, 0, 0);stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.4;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <line x1="340" y1="118" x2="340" y2="562" stroke="#4a9eff" stroke-width="1" opacity="0.25" clip-path="url(#shield-clip)" style="fill:rgb(0, 0, 0);stroke:rgb(74, 158, 255);color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.25;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <line x1="160" y1="340" x2="520" y2="340" stroke="#4a9eff" stroke-width="1" opacity="0.25" clip-path="url(#shield-clip)" style="fill:rgb(0, 0, 0);stroke:rgb(74, 158, 255);color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.25;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <circle cx="340" cy="340" r="90" fill="none" stroke="#4a9eff" stroke-width="2" opacity="0.5" style="fill:none;stroke:rgb(74, 158, 255);color:rgb(0, 0, 0);stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.5;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <circle cx="340" cy="340" r="62" fill="none" stroke="#4a9eff" stroke-width="1.5" opacity="0.3" style="fill:none;stroke:rgb(74, 158, 255);color:rgb(0, 0, 0);stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.3;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <path d="M306 324 L306 374 M306 344 L340 324 L374 344 L374 374" fill="none" stroke="#4a9eff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" style="fill:none;stroke:rgb(74, 158, 255);color:rgb(0, 0, 0);stroke-width:5px;stroke-linecap:round;stroke-linejoin:round;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <circle cx="340" cy="374" r="8" fill="#4a9eff" style="fill:rgb(74, 158, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <path d="M340 100 L520 170 L520 370 Q520 510 340 580 Q160 510 160 370 L160 170 Z" fill="none" stroke="#7ac3ff" stroke-width="3.5" style="fill:none;stroke:rgb(122, 195, 255);color:rgb(0, 0, 0);stroke-width:3.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <text x="340" y="630" text-anchor="middle" font-family="sans-serif" font-size="36" font-weight="500" fill="#4a9eff" letter-spacing="6" style="fill:rgb(74, 158, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:sans-serif;font-size:36px;font-weight:500;text-anchor:middle;dominant-baseline:auto">AEGIS</text>
+</svg>

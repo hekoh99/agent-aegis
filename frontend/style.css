@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, "Noto Sans KR", sans-serif;
+    background: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 4px;
+}
+
+#subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.lang-switch {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.lang-switch button {
+    padding: 6px 16px;
+    border: 1px solid #ddd;
+    background: #fff;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.lang-switch button.active {
+    background: #333;
+    color: #fff;
+    border-color: #333;
+}
+
+.tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.tab {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: #e0e0e0;
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.tab.active {
+    background: #fff;
+}
+
+.tab-content {
+    display: none;
+    background: #fff;
+    padding: 20px;
+    border-radius: 0 0 8px 8px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+textarea, input[type="url"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    resize: vertical;
+}
+
+.submit {
+    margin-top: 12px;
+    width: 100%;
+    padding: 14px;
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background: #1d4ed8;
+}
+
+.result {
+    margin-top: 20px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    white-space: pre-wrap;
+}
+
+.result.hidden {
+    display: none;
+}

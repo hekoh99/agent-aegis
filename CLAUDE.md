@@ -34,9 +34,63 @@
 ### Phase 3 — 카카오톡 채널 챗봇 (한국 방문 후)
 - 사업자등록 후 카카오 비즈니스 채널 심사 신청
 - 동일한 백엔드에 카카오 webhook 엔드포인트 추가
-- 공개 배포 목적
+- 한국 시장 공개 배포
 
-> 핵심 원칙: 백엔드 로직은 공유, 인터페이스(웹/텔레그램/카카오)만 교체
+### Phase 4 — 브라우저 플러그인 (북미 시장)
+- 크롬 익스텐션으로 링크 우클릭 → 즉시 검사 UX
+- Gmail 연동으로 이메일 자동 피싱 스캔
+- 크롬 웹스토어 등록 ($5 1회)
+- 북미 시장 수익화 주 채널
+
+### Phase 5 — 왓츠앱 봇 (사업자 준비 후)
+- 북미/글로벌 시니어 사용자 대상
+- 동일한 백엔드에 왓츠앱 webhook 엔드포인트 추가
+- Meta Business 등록 필요
+
+> 핵심 원칙: 백엔드 로직은 공유, 인터페이스(웹/텔레그램/카카오/플러그인/왓츠앱)만 교체
+
+---
+
+## 수익화 전략
+
+### 기본 구조 — 웹앱을 결제 허브로
+
+챗봇/플러그인은 진입점, 결제는 웹앱에서 일원화한다.
+
+```
+텔레그램/카카오/왓츠앱 봇
+브라우저 플러그인
+        ↓
+   무료 한도 초과 시 → 웹앱으로 유도
+        ↓
+   웹앱에서 구독 결제
+        ↓
+   계정 연동 → 모든 채널에서 유료 기능 해제
+```
+
+### 요금제 (안)
+
+| 플랜 | 가격 | 내용 |
+|---|---|---|
+| 무료 | $0 | 하루 N회 검사 |
+| 개인 | $5/월 | 무제한 검사 + 히스토리 |
+| 가족 | $8/월 | 개인 플랜 + 부모님 계정 1개 포함 |
+
+> "자녀가 부모님께 사줌" 구조 — "부모님 보호 플랜" 프레이밍
+
+### 채널별 역할
+
+| 채널 | 수익화 | 주 역할 |
+|---|---|---|
+| 웹앱 | 구독 결제 허브 | 핵심 수익 채널 |
+| 텔레그램 | 직접 수익화 어려움 | 테스트 / 진입점 |
+| 카카오톡 | 외부 결제 페이지 연동 | 한국 사용자 진입점 |
+| 브라우저 플러그인 | 용이 (크롬 웹스토어) | 북미 수익화 주 채널 |
+| 왓츠앱 | 외부 결제 페이지 연동 | 글로벌 진입점 |
+
+### 결제 연동 (예정)
+- 북미: Stripe
+- 한국: 토스페이먼츠 또는 카카오페이
 
 ---
 
@@ -162,6 +216,61 @@ DEFAULT_LANG=ko            # 기본 언어 (ko / en)
 - **출처 명시** — 팩트체크 시 근거 URL 반드시 포함
 - **한국어 응답** — 모든 AI 응답은 한국어, 쉬운 말로
 - **백엔드 API 우선 설계** — 프론트/봇은 API 클라이언트일 뿐
+
+
+### Overall
+- 함수/변수명은 영어, 주석은 한국어 허용
+- 함수는 하나의 역할만 (Single Responsibility)
+- 매직 넘버/문자열 금지 — 상수로 분리
+- 환경변수는 반드시 `.env`로 관리, 코드에 하드코딩 금지
+- 모든 에러는 무시하지 않고 명시적으로 처리
+
+### Backend (FastAPI)
+- 라우터 / 서비스 / 프롬프트 레이어 분리 유지
+  - `routers/` — HTTP 요청/응답만 담당
+  - `services/` — 비즈니스 로직 (Claude 호출, 외부 API 등)
+  - `prompts/` — 프롬프트 문자열만, 로직 없음
+- 서비스 레이어에서 직접 HTTP 응답 객체 반환 금지
+- 모든 엔드포인트에 Pydantic 모델로 요청/응답 타입 정의
+- 에러 응답은 FastAPI `HTTPException` 사용, 일관된 포맷 유지
+```python
+# 좋은 예
+@router.post("/phishing", response_model=PhishingResponse)
+async def check_phishing(req: PhishingRequest):
+    result = await phishing_service.analyze(req.text, req.lang)
+    return result
+
+# 나쁜 예 — 라우터에 로직 섞기
+@router.post("/phishing")
+async def check_phishing(text: str):
+    client = anthropic.Anthropic()
+    message = client.messages.create(...)  # 서비스 레이어로 분리할 것
+```
+
+- 외부 API 호출은 모두 `services/`에서만
+- 비밀키, API 키는 절대 로그에 출력 금지
+
+### 프론트엔드
+- UI 로직과 API 호출 로직을 반드시 분리
+- `api.js` 파일에 모든 API 호출 함수를 모아둘 것
+- 나중에 React로 교체 시 `api.js`는 그대로 재사용 가능해야 함
+```javascript
+// api.js — API 호출만 담당, UI 로직 섞지 말 것
+async function checkPhishing(text, lang = "ko") {
+  const res = await fetch("/api/phishing", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ text, lang })
+  })
+  return res.json()
+}
+```
+
+### AI / 프롬프트
+- AI가 단언하지 않도록 — "입니다" 대신 "가능성이 높습니다" 톤 유지
+- 팩트체크 시 근거 URL 반드시 포함
+- 모든 AI 응답은 한국어/영어 lang 파라미터를 따름
+- 프롬프트 수정 시 반드시 `prompts/` 파일만 수정, 서비스 로직 건드리지 말 것
 
 ---
 
